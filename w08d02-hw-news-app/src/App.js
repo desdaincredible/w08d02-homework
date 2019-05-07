@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './Login/Login';
 import ArticleContainer from './ArticleContainer/ArticleContainer';
-import Article from './ArticleContainer/Article/Article';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       username: null,
+      password: null,
       loggedIn: false
-    }
+    } 
   }
+  handleLogin = (formData) =>  {
+    this.setState({
+      username: formData.username,
+      password: formData.password,
+      loggedIn: true
+    })
+  };
   render(){
     return (
       <div className="container-fluid">
@@ -19,9 +26,13 @@ class App extends Component {
           <div className="col-sm-6">
             <div className="center-text">  
         <h1>News App</h1>
-        <Login />
+        <hr />
+        {
+        this.state.loggedIn === true ?
         <ArticleContainer />
-        <Article />
+          :
+          <Login handleLogin={ this.handleLogin } />
+        }
             </div>
           </div>
         </div>

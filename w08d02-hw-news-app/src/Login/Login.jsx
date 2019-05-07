@@ -15,7 +15,7 @@ class Login extends Component {
     };
     handleSubmit = (e) => {
         e.preventDefault();
-        // call handle function from App.js
+        this.props.handleLogin(this.state)
     };
     render(){
         return(
@@ -26,7 +26,7 @@ class Login extends Component {
                     <h1>Login</h1>
                     <form onSubmit={ this.handleSubmit }>
                         <div className="login-form">username <input onChange={ this.handleChange } type="text" name="username" /></div>
-                        <div className="login-form">password <input onChange={ this.handleChange } type="text" name="password" /></div>
+                        <div className="login-form">password <input onChange={ this.handleChange } type="password" name="password" /></div>
                         <div className="login-form"><input type="submit" /></div>
                     </form>
                 </div>
