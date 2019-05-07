@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Article from './Article/Article';
-import { async } from 'q';
 
 class ArticleContainer extends Component {
     constructor(){
@@ -23,18 +22,23 @@ class ArticleContainer extends Component {
         console.log(this.state.articles)
     };
     render(){
-        const articlesList = this.state.articles.map((article) => {
-            return(
-                <Article article={ article } />
-            )
-        })
+        // const articlesList = this.state.articles.map((article) => {
+        //     return(
+        //         <div>Stuff</div>
+        //         // <Article article={ article } />
+        //     )
+        // })
         return(
             <div className="container-fluid">
             <div className="row justify-content-center">
               <div className="col-sm-6">
                 <div className="center-text">  
             <h1>Articles</h1>
-            { articlesList }
+            <div key={ this.state.articles.title}>
+            {
+                JSON.stringify(this.state.articles.articles)
+            }
+            </div>
                 </div>
               </div>
             </div>
